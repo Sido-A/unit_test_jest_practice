@@ -2,7 +2,7 @@
   "name": "unti_test_jest",
   "version": "1.0.0",
   "description": "",
-  "main": "reverseString.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest"
   },
