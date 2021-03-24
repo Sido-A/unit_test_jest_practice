@@ -1,12 +1,47 @@
-const { expect } = require("@jest/globals");
+const {
+  expect,
+  beforeEach,
+  afterEach,
+  beforeAll,
+  afterAll,
+} = require("@jest/globals");
 const functions = require("./functions");
 
-// sum of number
+// const initDatabase = () => console.log("Database Initialized...");
+// const closeDatabase = () => console.log("Database Closed...");
+
+// Can add something (like checking) 'before'/'after' each tests
+// beforeEach(() => initDatabase());
+// afterEach(() => closeDatabase());
+
+//Can add something (like checking) 'before'/'after' only once per whole test
+// total execution of below is only 2 times
+// beforeAll(() => initDatabase());
+// afterAll(() => closeDatabase());
+
+const nameCheck = () => console.log("Checking name...");
+
+// 'beforeEach' will only affect test inside 'describe' 
+describe("Checking user names", () => {
+  beforeEach(() => nameCheck());
+
+  test("User is Jeff", () => {
+    const user = "Jeff";
+    expect(user).toBe("Jeff");
+  });
+
+  test("User is Karen", () => {
+    const user = "Karen";
+    expect(user).toBe("Karen");
+  });
+});
+
+// Sum of number
 test("Add 2 + 2 equal to 4", () => {
   expect(functions.add(2, 2)).toBe(4);
 });
 
-// sum of number not to be
+// Sum of number not to be
 test("Add 2 + 2 equal to NOT to equal 5", () => {
   expect(functions.add(2, 2)).not.toBe(5);
 });
